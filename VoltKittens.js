@@ -523,9 +523,9 @@ for (var i = 0; i < resources.length; i++) {
     var curRes = gamePage.resPool.get(resources[i][0]);
     var resourcePerTick = gamePage.getResourcePerTick(resources[i][0], 0);
     var resourcePerCraft = (resourcePerTick * 3);
-    		//craft at 80% cap - voltlighter edit
-		if (curRes.value > (curRes.maxValue*.8) && gamePage.workshop.getCraft(resources[i][1]).unlocked) {
-		gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2]));
+    		//craft at 90% cap, craft 2x the resource/tick rate - voltlighter edit
+		if (curRes.value > (curRes.maxValue*.9) && gamePage.workshop.getCraft(resources[i][1]).unlocked) {
+		gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2])*2);
 		}
 	}
 }
