@@ -489,7 +489,7 @@ function autoTrade() {
 		var goldResource = gamePage.resPool.get('gold');
 		var goldOneTwenty = gamePage.getResourcePerTick('gold') * 200;
 				//trade if gold 90% or more - voltlighter edit
-			if (goldResource.value > (goldResource.maxValue)*.9 {
+			if (goldResource.value > ((goldResource.maxValue)*.9)) {
 				if (unoRes.value > 5000  && gamePage.diplomacy.get('leviathans').unlocked && gamePage.diplomacy.get('leviathans').duration != 0) {
 					gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
 				} else if (titRes.value < (titRes.maxValue * 0.9)  && gamePage.diplomacy.get('zebras').unlocked) {
