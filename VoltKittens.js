@@ -147,7 +147,7 @@ var secondaryResources = [
 
 var htmlMenuAddition = '<div id="farRightColumn" class="column">' +
 
-'<a id="scriptOptions" onclick="selectOptions()"> | ScriptKitties </a>' + 
+'<a id="scriptOptions" style="color:yellow" onclick="selectOptions()"> | VoltKittens </a>' + 
 
 '<div id="optionSelect" style="display:none; margin-top:-400px; margin-left:-100px; width:200px" class="dialog help">' + 
 '<a href="#" onclick="clearOptionHelpDiv();" style="position: absolute; top: 10px; right: 15px;">close</a>' + 
@@ -388,7 +388,7 @@ function autoPraise(){
 	}
 }
 
-		// Build buildings automatically
+	// Build buildings automatically
 function autoBuild() {		
 if (autoCheck[0] != "false" && gamePage.ui.activeTabId == 'Bonfire') {
 	
@@ -483,11 +483,13 @@ if (autoCheck[0] != "false") {
 		// Trade automatically
 function autoTrade() {
 	if (autoCheck[3] != "false") {
+		// tit res heh heh
 		var titRes = gamePage.resPool.get('titanium');
 		var unoRes = gamePage.resPool.get('unobtainium');
 		var goldResource = gamePage.resPool.get('gold');
 		var goldOneTwenty = gamePage.getResourcePerTick('gold') * 200;
-			if (goldResource.value > (goldResource.maxValue - goldOneTwenty)) {
+				//trade if gold 90% or more - voltlighter edit
+			if (goldResource.value > (goldResource.maxValue)*.9 {
 				if (unoRes.value > 5000  && gamePage.diplomacy.get('leviathans').unlocked && gamePage.diplomacy.get('leviathans').duration != 0) {
 					gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
 				} else if (titRes.value < (titRes.maxValue * 0.9)  && gamePage.diplomacy.get('zebras').unlocked) {
@@ -523,7 +525,7 @@ for (var i = 0; i < resources.length; i++) {
     var curRes = gamePage.resPool.get(resources[i][0]);
     var resourcePerTick = gamePage.getResourcePerTick(resources[i][0], 0);
     var resourcePerCraft = (resourcePerTick * 3);
-    		//craft at 90% cap, craft 2x the resource/tick rate - voltlighter edit
+    		//craft at 80% cap - voltlighter edit
 		if (curRes.value > (curRes.maxValue*.9) && gamePage.workshop.getCraft(resources[i][1]).unlocked) {
 		gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2])*2);
 		}
