@@ -134,7 +134,6 @@ var resources = [
             ["coal", "steel", 100],
         	["iron", "plate", 125],
             ["oil", "kerosene", 7500],
-            ["uranium", "thorium", 250],
 			["unobtainium", "eludium", 1000]
                 ];
 				
@@ -525,14 +524,17 @@ for (var i = 0; i < resources.length; i++) {
     var curRes = gamePage.resPool.get(resources[i][0]);
     var resourcePerTick = gamePage.getResourcePerTick(resources[i][0], 0);
     var resourcePerCraft = (resourcePerTick * 3);
-    		//craft at 80% cap - voltlighter edit
+    		//craft at 90% cap - voltlighter edit
 		if (curRes.value > (curRes.maxValue*.9) && gamePage.workshop.getCraft(resources[i][1]).unlocked) {
-		gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2])*2);
+			gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2])*2);
+		}
+		else if (curRes == "titanium" && curRes.value > (curRes.maxValue*0.75) && gamePage.workshop.getCraft(resources[i][1]).unlocked) {
+			gamePage.craft(resources[i][1], (resourcePerCraft / resources[i][2])*2);
 		}
 	}
 }
 		// Craft secondary resources automatically if primary craftable is > secondary craftable
-for (var i = 0; i < secondaryResources.length; i++) {
+/*for (var i = 0; i < secondaryResources.length; i++) {
 	var priRes = gamePage.resPool.get(secondaryResources[i][0]);
 	var secRes = gamePage.resPool.get(secondaryResources[i][1]);
 	var resMath = priRes.value / secondaryResources[i][2];	
@@ -540,7 +542,7 @@ for (var i = 0; i < secondaryResources.length; i++) {
 	if (resMath > 1 && secRes.value < (priRes.value * (secResRatio / 100)) && gamePage.workshop.getCraft(secondaryResources[i][1]).unlocked) {
 		gamePage.craft(secondaryResources[i][1], (resMath * (secResRatio / 100)));
 	}
-}		
+}*/		
 }
 
 		// Auto Research
